@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy BF Day Rudriiiiii 💕</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: linear-gradient(135deg, #1a1a2e, #16213e); min-height: 100vh; color: #fff; }
+        .screen { display: none; min-height: 100vh; padding: 40px 20px; text-align: center; }
+        .screen.active { display: block; }
+        h1 { font-size: clamp(28px, 5vw, 48px); color: #ff6b9d; margin-bottom: 20px; }
+        h2 { font-size: clamp(22px, 4vw, 36px); color: #ff8fb3; margin-bottom: 15px; }
+        p { font-size: clamp(16px, 2.5vw, 20px); color: #ddd; line-height: 1.8; max-width: 700px; margin: 0 auto; }
+        .btn { background: linear-gradient(135deg, #ff6b9d, #ff8fb3); color: white; border: none; padding: 14px 35px; font-size: 18px; border-radius: 50px; cursor: pointer; margin-top: 25px; }
+        .btn:hover { transform: scale(1.05); }
+        .heart { font-size: 100px; cursor: pointer; }
+        .charger { font-size: 80px; cursor: pointer; }
+        .photo-card { width: 320px; max-width: 90%; margin: 20px auto; cursor: pointer; perspective: 1000px; }
+        .photo-inner { position: relative; width: 100%; height: 380px; transition: transform 0.6s; transform-style: preserve-3d; }
+        .photo-card.flipped .photo-inner { transform: rotateY(180deg); }
+        .photo-front, .photo-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 20px; }
+        .photo-front { background: #222; }
+        .photo-front img { width: 100%; height: 85%; object-fit: cover; border-radius: 15px; }
+        .photo-front p { margin-top: 10px; color: #ff6b9d; font-weight: bold; }
+        .photo-back { background: linear-gradient(135deg, #2a1a3e, #1a2a4e); transform: rotateY(180deg); }
+        .video-box { width: 400px; max-width: 90%; margin: 20px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+        .video-box video { width: 100%; display: block; }
+        .letter { background: #222; border-radius: 20px; padding: 30px; max-width: 600px; margin: 20px auto; box-shadow: 0 8px 30px rgba(0,0,0,0.4); text-align: left; border: 2px solid #ff6b9d; }
+        .letter p { text-align: left; margin-bottom: 15px; }
+        .options { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+        .float-hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; }
+        .float-hearts span { position: absolute; bottom: -50px; animation: floatUp 10s linear infinite; opacity: 0.5; }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0.5; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+        .content { position: relative; z-index: 1; }
+        .nav { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="float-hearts" id="hearts"></div>
+
+    <!-- Screen 1: Welcome -->
+    <div class="screen active" id="screen1">
+        <div class="content">
+            <h1>💕 Happy BF Day Rudriiiiii 💕</h1>
+            <p>Meri jaan, yeh website sirf tumhare liye hai...</p>
+            <button class="btn" onclick="showScreen('screen2')">Aage Badho ➡️</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: Heart -->
+    <div class="screen" id="screen2">
+        <div class="content">
+            <h2>Ek chhota sa surprise...</h2>
+            <div class="heart" onclick="showScreen('screen3')">❤️</div>
+            <p>Heart pe click karo 💕</p>
+        </div>
+    </div>
+
+    <!-- Screen 3: Charger + Message -->
+    <div class="screen" id="screen3">
+        <div class="content">
+            <h2>merra kuchu puchu ye hamari story wala charger ⚡</h2>
+            <div class="charger" onclick="showScreen('screen4')">🔋</div>
+            <p>Charger pe click karo...</p>
+        </div>
+    </div>
+
+    <!-- Screen 4: Options -->
+    <div class="screen" id="screen4">
+        <div class="content">
+            <h2>Ab kya dekhna hai? 💕</h2>
+            <div class="options">
+                <button class="btn" onclick="showScreen('screen5')">📸 Photos</button>
+                <button class="btn" onclick="showScreen('screen10')">🎬 Videos</button>
+                <button class="btn" onclick="showScreen('screen11')">💌 Letter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5-9: Photos (flip) -->
+    <div class="screen" id="screen5">
+        <div class="content">
+            <h2>Hamari Memories 📸</h2>
+            <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                <div class="photo-inner">
+                    <div class="photo-front">
+                        <img src="photo1.jpeg" alt="Photo 1">
+                        <p>Tap to flip 💕</p>
+                    </div>
+                    <div class="photo-back">
+                        <p>i love uhhhh bby i love jab bhi tu mujhe apni bache wali side dikhata h i love uhhhhhh so much bby tu sach mein mera pehla bacha h i sounds weird but it is what it is mere liye tu sabse zyada pyaara h mera bacha bby ........ i love uhhh tons💋🥹</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+                <button class="btn" onclick="showScreen('screen6')">Next ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="screen6">
+        <div class="content">
+            <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                <div class="photo-inner">
+                    <div class="photo-front">
+                        <img src="photo2.jpeg" alt="Photo 2">
+                        <p>Tap to flip 💕</p>
+                    </div>
+                    <div class="photo-back">
+                        <p>i love uhhhh bbu and i love jab tu sirf mujhe hasaane pe focus krta h jab mai sad ya gussa hou..... tu sach mein bilkul waisa h jaisa mai chahti thi even usse bhi zyada acha mujhe kabhi kabhi sab sapna lagta h kaise itne cute pyara acha bacha mujhe pyaar kr skta h lekin hehehehehehe krta h mujhe pyaar mujhe sabse zyada special feel krwata h hamesha mera cutu bacha i love uhhhhhhh tons meri jaan 💋🤭</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="btn" onclick="showScreen('screen5')">⬅️ Back</button>
+                <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+                <button class="btn" onclick="showScreen('screen7')">Next ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="screen7">
+        <div class="content">
+            <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                <div class="photo-inner">
+                    <div class="photo-front">
+                        <img src="photo3.jpeg" alt="Photo 3">
+                        <p>Tap to flip 💕</p>
+                    </div>
+                    <div class="photo-back">
+                        <p>i love uhhhhhh bby..... mujhe bhut lucky feel hota h jab bhi tujhe dekhti hu or bhut zyada acha or khudpe proud hota h jab mai dekhti hu tu meri vjh se khush h ya smile kr ra h ye effort bhi ek step h khudpe proud krk tujhe acha feel krwaungi hehehehehe yk tu sabse pyara or masoom bacha h meri jaan mera cutu bby 🥹💋 i love uhhhhh tons i wish tu hamesha khush rahe or hasta rahe darlo meri jaan 💋🤭</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="btn" onclick="showScreen('screen6')">⬅️ Back</button>
+                <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+                <button class="btn" onclick="showScreen('screen8')">Next ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="screen8">
+        <div class="content">
+            <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                <div class="photo-inner">
+                    <div class="photo-front">
+                        <img src="photo4.jpeg" alt="Photo 4">
+                        <p>Tap to flip 💕</p>
+                    </div>
+                    <div class="photo-back">
+                        <p>i love uhhhhhhhh and proud of u jo tu h uspe mujhe proud h bby esse he rehna hamesha tu best bf h best bhai best friend or best insaan h tu bby mai hamesha har chiz pe haar jgh tujhe support krungi ykw bby tu mujhe kyu pasand h waise toh bhut reason h lekin unme se ek ye reason bhi h tu jis trh se pyaar krta h harshita ko jis trh uske sath tera bond h mujhe bhut pasand h tu hamesha ese he pyaar krna usko support krna 🥹💋</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="btn" onclick="showScreen('screen7')">⬅️ Back</button>
+                <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+                <button class="btn" onclick="showScreen('screen9')">Next ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="screen9">
+        <div class="content">
+            <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                <div class="photo-inner">
+                    <div class="photo-front">
+                        <img src="photo5.jpeg" alt="Photo 5">
+                        <p>Tap to flip 💕</p>
+                    </div>
+                    <div class="photo-back">
+                        <p>i love uhhhhh bby 💋💋i love jab tu meri choti choti pasand ka bhi dhyaan rkhta h waise toh tu sab chiz mein bhut acha dikhta h lekin pink shirt mein bhut zyada acha lagta h bilkul mera lagta h hehehehehe💋 ye meri fav photo h bby thank you abhi tab tune jo jo efforts kare h mujhe khush krne mien mere liye but matter krte h thank you bby thank uhhhhhhhhh and i lve uhhhhhhh so much💋😘</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="btn" onclick="showScreen('screen8')">⬅️ Back</button>
+                <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 10: Videos (all on one screen) -->
+    <div class="screen" id="screen10">
+        <div class="content">
+            <h2>Hamari Cute Moments 🎬</h2>
+            <div class="video-box"><video controls src="video1.mp4"></video></div>
+            <div class="video-box"><video controls src="video2.mp4"></video></div>
+            <div class="video-box"><video controls src="video3.mp4"></video></div>
+            <div class="video-box"><video controls src="video4.mp4"></video></div>
+            <div class="video-box"><video controls src="video5.mp4"></video></div>
+            <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+        </div>
+    </div>
+
+    <!-- Screen 11: Letter -->
+    <div class="screen" id="screen11">
+        <div class="content">
+            <h2>💌 Ek Chhota Sa Letter 💌</h2>
+            <div class="letter">
+                <p>My dearest Rudriiiiii,</p>
+                <p>You are my favorite hello and my hardest goodbye. Every moment with you feels like a dream I never want to wake up from. You make my world brighter, my heart lighter, and my life so much more beautiful.</p>
+                <p>Thank you for being you — my best friend, my partner, my home. I love you tons, today and always. 💕</p>
+                <p>Yours forever,<br>Your cutu bby 💋</p>
+            </div>
+            <div class="nav">
+                <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+                <button class="btn" onclick="showScreen('screen12')">Last Page ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 12: Final -->
+    <div class="screen" id="screen12">
+        <div class="content">
+            <h1>I Love You 💕</h1>
+            <h2>Happy BF Day, Rudriiiiii!</h2>
+            <p>Meri jaan, tu sabse best hai. Hamesha khush rehna! 💋</p>
+            <button class="btn" onclick="showScreen('screen4')">🏠 Home</button>
+        </div>
+    </div>
+
+    <script>
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        const heartsContainer = document.getElementById('hearts');
+        const emojis = ['💕', '💖', '💗', '💓', '💘', '🩷'];
+        for (let i = 0; i < 15; i++) {
+            const span = document.createElement('span');
+            span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            span.style.left = Math.random() * 100 + '%';
+            span.style.animationDuration = (8 + Math.random() * 8) + 's';
+            span.style.animationDelay = Math.random() * 10 + 's';
+            span.style.fontSize = (18 + Math.random() * 25) + 'px';
+            heartsContainer.appendChild(span);
+        }
+    </script>
+</body>
+</html>
